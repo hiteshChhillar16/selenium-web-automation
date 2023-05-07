@@ -21,6 +21,7 @@ class FacilityPage:
 
             # Select the desired facility
             facility_name_field = self.wrapper.find_element_by_name("facility_name")
+            facility_name_field.clear()  # Clear the text field
             self.wrapper.send_keys(facility_name_field,self.facility_name)
             searchButton = self.wrapper.find_element_by_name("search")
             self.wrapper.click(searchButton)
@@ -32,19 +33,18 @@ class FacilityPage:
             links_xpath = f'{table_xpath}//tr/td[1]/a'
             
             # Locate all the clickable links in the first column using the XPath expression
-            facility_links = self.wrapper.find_elements_by_xpath(links_xpath)
+            facility_links = self.wrapper.find_element_by_xpath(links_xpath)
             
             # If there's at least one facility link, click on the first one
             if facility_links:
-                facility_links[0].click()
+                facility_links.click()
             else:
                 print("No facility links found.")                                    
     
     def find_facility_link(self):
         try:
             # Create an XPath expression that finds the link element containing the facility name
-            xpath_expression = f'//span[contains(., "Facility:")]/a[contains(., "{self.facility_name}")]'
-
+            xpath_expression = f'//span[contains(., "Facility:")]/a[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "{self.facility_name}")]'
             # Locate the link element using the XPath expression
             facility_link = self.wrapper.find_element_by_xpath(xpath_expression)
             return facility_link

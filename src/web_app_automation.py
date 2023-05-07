@@ -21,8 +21,8 @@ class WebAppAutomation:
 
         # Perform the action based on the provided page_name
         if self.args.page == "facilitysearch":
-            facility_page = self.pages["facilitysearch"](self.driver, self.args)
-            facility_page
+            facility_page = self.pages["facilitysearch"](self.driver, self.args.facility_name)
+            facility_page.run()
 
         elif self.args.page == "residentpage":
             # Ensure FacilityPage is executed before ResidentPage
@@ -37,7 +37,7 @@ class WebAppAutomation:
             facility_page = self.pages["facilitysearch"](self.driver, self.args.facility_name)
             facility_page.run()
 
-            failed_transmissions_page = self.pages["failedtransmissions"](self.driver, self.args)
+            failed_transmissions_page = self.pages["failedtransmissions"](self.driver)
             failed_transmissions_page.run()            
 
         else:
