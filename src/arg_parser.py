@@ -2,7 +2,7 @@ import argparse
 
 def parse_arguments():
     # Create an argument parser
-    parser = argparse.ArgumentParser(description="Automate your company's web application")
+    parser = argparse.ArgumentParser(description="Automate your web application")
 
     # Add arguments
     parser.add_argument("-p", "--page", type=str, choices=["facilitysearch", "residentpage", "failedtransmissions"], help="Page name")
@@ -14,3 +14,5 @@ def parse_arguments():
 
     # Parse arguments
     return parser.parse_args()
+
+

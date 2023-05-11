@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python: My Script",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "args": [
+                "--username", "opsgod",
+                "--password", "password1",
+                "--page", "failedtransmissions",
+                "--first", "John",
+                "--last", "Doe",
+                "--facility_name", "matrixcare center"
+            ]
+        }
+    ]
+}
